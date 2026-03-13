@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShortShop - 쇼핑 숏폼 자동생성기</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="app">
+        <!-- 헤더 -->
+        <header class="header">
+            <div class="logo">
+                <span class="logo-icon">🎬</span>
+                <h1>ShortShop</h1>
+                <span class="badge">쇼핑 숏폼 자동생성</span>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <!-- Step 1: 상품 정보 입력 -->
+            <section class="step-section" id="step1">
+                <div class="step-header">
+                    <span class="step-number">1</span>
+                    <h2>상품 정보 입력</h2>
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group full-width">
+                        <label for="productName">상품명 *</label>
+                        <input type="text" id="productName" placeholder="예: 프리미엄 무선 이어폰" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="price">판매가 *</label>
+                        <input type="text" id="price" placeholder="예: 39900" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="originalPrice">원가 (선택)</label>
+                        <input type="text" id="originalPrice" placeholder="예: 79900">
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="description">상품 설명</label>
+                        <textarea id="description" rows="2" placeholder="예: 최고급 음질의 블루투스 5.3 무선 이어폰"></textarea>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="features">상품 특징 (줄바꿈 또는 콤마로 구분)</label>
+                        <textarea id="features" rows="3" placeholder="예:&#10;노이즈 캔슬링&#10;30시간 배터리&#10;IPX5 방수"></textarea>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="review">대표 리뷰 (선택)</label>
+                        <textarea id="review" rows="2" placeholder="예: 이 가격에 이 품질은 대박! 강력 추천합니다"></textarea>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="cta">CTA 문구</label>
+                        <input type="text" id="cta" value="지금 바로 구매하세요!" placeholder="구매 유도 문구">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="affiliateId">제휴 ID (선택)</label>
+                        <input type="text" id="affiliateId" placeholder="예: bestlife7">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="affiliateLink">제휴 링크 (선택)</label>
+                        <input type="text" id="affiliateLink" placeholder="예: link.inpock.co.kr/bestlife7">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Step 2: 이미지 업로드 -->
+            <section class="step-section" id="step2">
+                <div class="step-header">
+                    <span class="step-number">2</span>
+                    <h2>상품 이미지</h2>
+                </div>
+
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-placeholder" id="uploadPlaceholder">
+                        <span class="upload-icon">📸</span>
+                        <p>이미지를 드래그하거나 클릭하여 업로드</p>
+                        <p class="upload-hint">JPG, PNG, WebP (최대 10MB)</p>
+                    </div>
+                    <input type="file" id="imageInput" accept="image/jpeg,image/png,image/webp"
+                           multiple style="display:none">
+                </div>
+
+                <div class="image-preview-list" id="imagePreviewList"></div>
+            </section>
+
+            <!-- Step 3: 템플릿 선택 -->
+            <section class="step-section" id="step3">
+                <div class="step-header">
+                    <span class="step-number">3</span>
+                    <h2>템플릿 선택</h2>
+                </div>
+
+                <div class="template-grid" id="templateGrid">
+                    <!-- JS로 동적 생성 -->
+                </div>
+            </section>
+
+            <!-- 생성 버튼 -->
+            <div class="generate-section">
+                <button class="btn-generate" id="btnGenerate" disabled>
+                    <span class="btn-icon">🎬</span>
+                    숏폼 영상 생성하기
+                </button>
+            </div>
+
+            <!-- 결과 영역 -->
+            <section class="result-section" id="resultSection" style="display:none">
+                <div class="step-header">
+                    <span class="step-number">✓</span>
+                    <h2>생성 완료!</h2>
+                </div>
+
+                <div class="result-content">
+                    <video id="resultVideo" controls></video>
+                    <div class="result-actions">
+                        <a class="btn-download" id="btnDownload" download>
+                            📥 영상 다운로드
+                        </a>
+                        <button class="btn-retry" id="btnRetry">
+                            🔄 다시 만들기
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 로딩 -->
+            <div class="loading-overlay" id="loadingOverlay" style="display:none">
+                <div class="loading-content">
+                    <div class="spinner"></div>
+                    <p class="loading-text">영상을 생성하고 있습니다...</p>
+                    <p class="loading-hint">잠시만 기다려주세요 (10~30초)</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>

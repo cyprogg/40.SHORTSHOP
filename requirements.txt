@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+python-multipart
+moviepy
+Pillow
+numpy
+pydantic
+aiofiles
+jinja2
+edge-tts
